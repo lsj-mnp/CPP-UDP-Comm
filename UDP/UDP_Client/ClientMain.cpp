@@ -4,7 +4,7 @@ int main()
 {
 	CClient client{};
 
-	client.SetServerAddr("192.168.35.60", 15000);
+	client.SetServerAddr("192.168.35.118", 15000);
 
 	std::thread thrReceive
 	{
@@ -12,7 +12,9 @@ int main()
 		{
 			while (true)
 			{
-				if (client.Receive())
+				bool succeed_receive{ client.Receive() };
+
+				if (succeed_receive)
 				{
 					printf("%s\n", client.GetBuff());
 				}
