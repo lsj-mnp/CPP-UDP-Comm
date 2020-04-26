@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ServerMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CServer.h" />
