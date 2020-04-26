@@ -3,7 +3,11 @@
 
 int main()
 {
+	
+
 	CServer server{};
+
+
 
 	std::thread thread_receive
 	{
@@ -11,11 +15,17 @@ int main()
 		{
 			while (true)
 			{
-				server.receive();
+				bool receive = server.receive();
+
+				if (receive == true)
+				{
+					OutputDebugString(TEXT("리시브에 성공했습니당! \n"));
+				}
 
 				const char* message = server.getBuf();
 
 				printf(message);
+
 			}
 		}
 	};
@@ -28,7 +38,12 @@ int main()
 	{
 		fgets(send_message, 100, stdin);
 
-		server.sendToAll(send_message);
+		bool send = server.sendToAll(send_message);
+
+		if (send == true)
+		{
+			OutputDebugString(TEXT("메세지를 보내는 것에 성공했습니당! \n"));
+		}
 	}
 
 	thread_receive.join();
